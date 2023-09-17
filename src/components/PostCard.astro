@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { slugify, formatDate } from "../scripts/utils";
+import Link from "./Link.astro";
+
+interface PostCardProps {
+  post: CollectionEntry<"blogs">;
+  heading: "h2" | "h3";
+}
+
+const { post, heading } = Astro.props as PostCardProps;
+const { title, date, author, image, description, category } = post.data;
+const url = `/post/${post.slug}`;
+
+const Heading = heading;
+---
+
+<article class="card">
+  <small>
+    <a href={`/category/${slugify(category)}/`} class="badge">{category}</a>
+  </small>
+  <a href={url} aria-hidden="true" tabindex="-1">
+    <Image
+      src={image.src}
+      alt={image.alt}
+      width="400"
+      height="250"
+      format="webp"
+      quality={80}
+    />
+  </a>
+  <div class="content">
+    <div>
+      <Heading class="h3">
+        <a href={url}>{title}</a>
+      </Heading>
+      <small>
+        by <a href={`/author/${slugify(author)}/`}>{author}</a> • {
+          formatDate(date)
+        }
+      </small>
+    </div>
+    <p>{description}</p>
+    <Link href={url} text="Read Post" style="secondary" />
+  </div>
+</article>

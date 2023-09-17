@@ -1,0 +1,36 @@
+---
+import { slugify } from "../scripts/utils";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blogs");
+const categoryCounts = allPosts.reduce(
+  (categoryCounts: Record<string, number>, item) => {
+    const { category } = item.data;
+    if (!categoryCounts[category]) {
+      categoryCounts[category] = 1;
+    } else {
+      categoryCounts[category]++;
+    }
+    return categoryCounts;
+  },
+  {},
+);
+
+interface CategoryCloudProps {
+  showCount: boolean;
+}
+
+const { showCount } = Astro.props as CategoryCloudProps;
+---
+
+<ul class="categories">
+  {
+    Object.entries(categoryCounts).map(([key, val]) => (
+      <li>
+        <a class="badge" href={`/category/${slugify(key)}/`}>
+          {key} {showCount && `(${val})`}
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,44 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import PostHeader from "../components/PostHeader.astro";
+import CategoryCloud from "../components/CategoryCloud.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+import MainLayout from "./MainLayout.astro";
+
+interface BlogPostLayoutProps {
+  post: CollectionEntry<"blogs">;
+}
+
+const { post } = Astro.props as BlogPostLayoutProps;
+const { title, description, date, category, author, image } = post.data;
+
+const allPosts = await getCollection("blogs");
+const relatedPosts = allPosts.filter(
+  (post) =>
+    post.data.category.toLowerCase() === category.toLowerCase() &&
+    post.data.title !== title,
+);
+---
+
+<MainLayout {title} {description}>
+  <PostHeader {title} {description} {date} {category} {image} {author} />
+  <div class="post-content">
+    <div class="content">
+      <slot />
+    </div>
+    <div class="sidebar">
+      <aside class="container" aria-label="Blog categories">
+        <h2 class="h3">Blog Categories</h2>
+        <CategoryCloud showCount={false} />
+      </aside>
+      {
+        relatedPosts.length > 0 && (
+          <aside class="container" aria-label="Related posts">
+            <h2 class="h3">Related Posts</h2>
+            <RelatedPosts {relatedPosts} />
+          </aside>
+        )
+      }
+    </div>
+  </div>
+</MainLayout>
