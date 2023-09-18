@@ -1,21 +1,17 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import { slugify } from "../../scripts/utils";
+import type { CollectionEntry } from "astro:content";
+import { slugify, filteredPosts } from "../../scripts/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 
 export const getStaticPaths = async () => {
-  const allPosts = await getCollection("blogs");
-  const filteredPosts = [...allPosts]
-    .filter((x) => x.data.draft === false)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
+  const posts = await filteredPosts();
   const allCategories = [
-    ...new Set(filteredPosts.map((post) => post.data.category).flat()),
+    ...new Set(posts.map((post) => post.data.category).flat()),
   ];
 
   return allCategories.map((category) => {
-    const categoryPosts = filteredPosts.filter(
+    const categoryPosts = posts.filter(
       (post) => post.data.category === category,
     );
     return {
