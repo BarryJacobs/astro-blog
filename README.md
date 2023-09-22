@@ -8,6 +8,8 @@ For initial learning, I followed the following excellent [Youtube course](https:
 
 The course was built using an earlier version of Astro, so as I followed along through the course I've updated some of the content to use newer Astro features e.g.: replacing the inline markdown files with an mdx content collection. I've also added stronger typing to the components.
 
+The only part of the tutorial I haven't implemented was the SEO section but I wanted to move on to another project integrating Astro with a CMS, which will be available shortly.
+
 A demo of the site can be found [here](https://thriving-unicorn-d49a30.netlify.app/).
 
 ## Bun
