@@ -33,6 +33,9 @@ h6 {
 
 /* CSS variables inspired by https://open-props.style/ */
 :root {
+  /* color scheme */
+  color-scheme: dark light;
+
   /* colors */
   --_hue: 235;
 
@@ -41,6 +44,7 @@ h6 {
   --txt--light: var(--_hue) 40% 5%;
   --accent--light: var(--_hue) 55% 50%;
   --muted--light: var(--_hue) 30% 99%;
+
   /* Dark Mode */
   --bkg--dark: var(--_hue) 15% 10%;
   --txt--dark: var(--_hue) 20% 85%;
@@ -51,7 +55,6 @@ h6 {
   --txt: var(--txt--light);
   --accent: var(--accent--light);
   --muted: var(--muted--light);
-  color-scheme: dark;
 
   /* dynamic spacing adapted from utopia.fyi */
   --space-2xs: clamp(0.31rem, calc(0.18rem + 0.65vw), 0.69rem);
