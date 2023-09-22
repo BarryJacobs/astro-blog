@@ -4,7 +4,7 @@
 
 I'm primarily a React developer but wanted to pick up Astro as an additional development tool and in the process have a quick look at Bun as a replacement for Node in dev environments. So far, I've been extremely impressed with Astro and seeing less and less use cases for NextJS in the process.
 
-For initial learning, I followed the following excellent [Youtube course](https://www.youtube.com/watch?v=F2pw1C9eKXw&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF) by Chris Pennington and I would highly recommend starting with this to learn the basics of Astro. The [official documentation](https://docs.astro.build/en/getting-started/) is also extremely good and worth a read.
+For initial learning, I followed this excellent [Youtube course](https://www.youtube.com/watch?v=F2pw1C9eKXw&list=PLoqZcxvpWzzeRwF8TEpXHtO7KYY6cNJeF) by Chris Pennington and I would highly recommend starting with this to learn the basics of Astro. The [official documentation](https://docs.astro.build/en/getting-started/) is also extremely good and worth a read.
 
 The course was built using an earlier version of Astro, so as I followed along through the course I've updated some of the content to use newer Astro features e.g.: replacing the inline markdown files with an mdx content collection. I've also added stronger typing to the components.
 
