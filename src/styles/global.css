@@ -51,7 +51,7 @@ h6 {
   --txt: var(--txt--light);
   --accent: var(--accent--light);
   --muted: var(--muted--light);
-  color-scheme: light;
+  color-scheme: dark;
 
   /* dynamic spacing adapted from utopia.fyi */
   --space-2xs: clamp(0.31rem, calc(0.18rem + 0.65vw), 0.69rem);
