@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { Post } from "../../types";
 import { slugify, filteredPosts } from "../../scripts/utils";
 import MainLayout from "../../layouts/MainLayout.astro";
 import PostCard from "../../components/PostCard.astro";
@@ -22,7 +22,7 @@ export const getStaticPaths = async () => {
 
 interface Props {
   authorName: string;
-  posts: CollectionEntry<"blogs">[];
+  posts: Post[];
 }
 
 const { authorName, posts } = Astro.props as Props;

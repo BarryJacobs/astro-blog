@@ -1,4 +1,5 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { Post } from "../types";
+import { getCollection } from "astro:content";
 
 export const slugify = (text: string) =>
   text
@@ -15,7 +16,7 @@ export const formatDate = (date: Date) =>
     timeZone: "UTC",
   });
 
-export const filteredPosts = async (): Promise<CollectionEntry<"blogs">[]> => {
+export const filteredPosts = async (): Promise<Post[]> => {
   const posts = await getCollection("blogs");
   return [...posts]
     .filter((x) => x.data.draft === false)

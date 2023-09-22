@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { Post } from "../types";
 import { Image } from "astro:assets";
 import { slugify, formatDate } from "../scripts/utils";
 import Link from "./Link.astro";
 
 interface PostCardProps {
-  post: CollectionEntry<"blogs">;
+  post: Post;
   heading: "h2" | "h3";
 }
 

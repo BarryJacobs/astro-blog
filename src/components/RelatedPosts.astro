@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { Post } from "../types";
 import { slugify, formatDate } from "../scripts/utils";
 
 interface RelatedPostsProps {
-  relatedPosts: CollectionEntry<"blogs">[];
+  relatedPosts: Post[];
 }
 
 const { relatedPosts } = Astro.props as RelatedPostsProps;
