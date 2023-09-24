@@ -30,5 +30,6 @@ const { category, title, author, date, image } = Astro.props as PostHeaderProps;
     format="avif"
     quality="mid"
     class="hero-image"
+    transition:name={title}
   />
 </header>
